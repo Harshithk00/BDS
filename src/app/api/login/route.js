@@ -23,7 +23,7 @@ export async function POST(req) {
 
 
     //JWTtoken here
-    const token = signToken({ id: user.id, username: user.username });
+    const token = signToken({ userId: user.id, username: user.username });
     const response = NextResponse.json({ message: 'Login successful' }, { status: 200 });
     response.cookies.set('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'Strict'});
     return response;
